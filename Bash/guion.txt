@@ -1,0 +1,55 @@
+Práctica de BASH (Usuarios y procesos)
+Objetivos
+Control de los usuarios y sus procesos.
+
+Introducción
+Unix es un sistema operativo multi-usuario y multi-tarea, ello conlleva que se debe compartir los recursos entre los procesos de los distintos usuarios. El administrador de sistemas tiene como tare el control de los usuarios y las reglas de uso del sistema. En esta practica vamos a realizar un script que facilite su tarea a un administrador de sistemas consultando el consumo de los procesos de los usuarios.
+
+Tareas
+
+Te proponemos que realices un script que al menos incluya las siguientes funcionalidades:
+
+1. Listado de Procesos
+
+Mostrar un listado con todos los usuarios que están ejecutando procesos. En este listado se deben incluir los usuarios reales, los demonios, root, … El listado estará ordenado alfabéticamente, e incluirá el UID del usuario, el GID,  el nombre del proceso de este usuario que ha consumido más CPU hasta el momento y el tiempo consumido, además del proceso más antiguo y el tiempo que lleva en ejecución. 
+
+
+
+con la opción -U se ordenará por UID.
+
+
+
+Con la opción -R se ordenará inversamente, tanto por nombre de usuario como por UID
+
+
+
+Añadir el número de procesos que tiene ese usuario ejecutando actualmente.
+
+
+
+Se permitirá con el parámetro -ut N, eliminar los procesos, con un consumo de CPUsuperior al indicado. El parámetro -ud N eliminará los procesos que lleven en ejecución más del tiempo indicado. Controlar los posibles errores al eliminar los procesos.
+
+Opcional:
+
+Incluir la opción -sortt que ordene los procesos procesos por tiempo consumido de CPU y la opción -sortd que ordene por tiempo en ejecución.
+
+
+Maneja adecuadamente los errores.
+
+      Si el script no se ejecuta como root, es posible que no tengamos permisos para ejecutar algún comando o abrir algún archivo, y por tanto, para recuperar cierta información. Evita mensajes de error en ese caso, detectando la condición antes de provocarla y usando las comillas adecuadamente para devolver y usar cadenas vacías en las columnas.
+
+En caso de error grave muestra un mensaje y sal con código de salida distinto de 0.
+Recuerda la función error_exit de ejercicios anteriores y, si lo crees conveniente, reúsala o haz la tuya propia.
+Trata como un error que el usuario emplee opciones no soportadas
+Haz lo mismo con las otras posibles condiciones de error que se te ocurran ¿has probado a invocar tu programa opciones absurdas a ver si lo haces fallar?
+Recuerda facilitar la lectura de tu código:
+Usa comentarios en los elementos más complejos del programa para que te sea más sencillo entenderlo cuando haya pasado un tiempo y no te acuerdes
+Usa funciones para compartimentar el programa, así como variables y constantes (variables en mayúsculas) que hagan tu código más legible.
+Incluye código para procesar la línea de comandos.
+Se debe mostrar ayuda sobre el uso si el usuario emplea la opción -h o --help.
+Se debe indicar el error y mostrar ayuda sobre el uso si el usuario emplea uno opción no soportada
+Ojo con la sustitución de variables y las comillas. En caso de problemas piensa en cómo quedarían las sentencias si las variables no valieran nada ¿tendría sentido para BASH el comando a ejecutar?
+Evaluación
+Esta actividad se calificará por el trabajo bien hecho al desarrollar el código, el grado de ajuste a los requisitos y la realización de opcionales siempre y cuando el alumno sea capaz de explicar y defender la practica de forma correcta.
+Se penalizará el uso de ficheros temporales cuando no sea estrictamente necesario.
+Las prácticas entregadas serán analizadas en busca de plagio. La calificación final variará según los resultados de ese análisis.

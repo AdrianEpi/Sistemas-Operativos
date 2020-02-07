@@ -1,0 +1,28 @@
+Actividad - Semana 8
+Objetivos
+El objetivo de esta actividad es familiarizaros con los conceptos básicos de la programación de la shell BASH.
+
+Tareas
+Te proponemos que realices las siguiente tareas:
+
+1. Leer los contenidos de la lección
+En el aula podrás encontrar un enlace al documento Configuración del entorno, creación del primer script y control de flujo. Te sugerimos que lo leas y hagas los ejemplos que allí se proponen por ti mismo. Si quieres ampliar conocimientos también dispones de la presentación BASH Scripting: Una introducción mediante ejemplos.
+
+Al termina esta tarea anterior debes tener tu propio script sysinfo_page a medio hacer. ¿Serías capaz de hacer lo siguiente?
+
+2. Implementar el código de la función drives_space()
+Modificar la función drive_space() para mostrar el espacio ocupado en las particiones/discos duros del sistema sabiendo que el comando df ya proporciona esa información.
+
+3. Implementar el código de la función home_space()
+Modificar la función home_space() para mostrar el espacio ocupado por cada directorio personal en /home teniendo presente que:
+
+Si el usuario que ejecuta el script es root, debe mostrar es espacio ocupado por cada directorio personal en /home.
+Si el usuario que ejecuta el script NO es root, debe mostrar el espacio ocupado por el directorio personal del usuario actual. Recuerden que la variable de entorno $USER nos indica el nombre del usuario actual.
+Si el usuario actual $USER no coincide con el usuario que entro en el sistema $LOGNAME, lo indicamos en el script, mostrando ambos usuarios
+Contar el número de procesos que se ejecutan hasta ahora utilizando el comando wc -l, junto con ps, tener en cuenta que ps incluye una linea más de encabezado.
+Debes usar el comando du, que recorre los directorios indicados como argumento (p. ej. du /home/jmtorres /home/jttoledo o du /home/b*) mostrando el espacio ocupado por los archivos de cada subdirectorio de su interior así como el total. Te recomendamos que pruebes el comando para que te familiarices con él.
+Como sólo interesa la suma total del espacio ocupado por cada directorio de usuario hay que buscar en la ayuda (o en man du) la opción que solo muestra estos totales (en nuestro ejemplo, el total de lo ocupado por /home/jmtorres y por /home/jttoledo).
+La lista proporcionada por du debe mostrarse ordenada en orden decreciente (primero el directorio que ocupa más espacio).
+4. Evaluación
+Se calificará por la correcta realización de los cambios al script que los profesores propongan durante la sesión práctica. Por lo tanto es importante llegar a la misma con esta actividad ya hecha.
+Para entregar, sube sólo el archivo del script, sin comprimir.

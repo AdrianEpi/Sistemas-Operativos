@@ -1,0 +1,47 @@
+Actividad - Semana 9
+Objetivos
+El objetivo de esta actividad es familiarizaros con los conceptos básicos de la programación de la shell BASH. En concreto con los temas abordados hasta la semana 9 de prácticas.
+
+Tareas
+Te proponemos que realices las siguiente tareas para la próxima semana:
+
+1. Leer los contenidos de la Lección de la semana 9
+En el aula podrás encontrar un enlace al documento Control de flujo, parámetros posicionales y entrada estándar, además de Manejo de errores, depuración y comandos adicionales. Te sugerimos que lo leas y hagas los ejemplos que allí se proponen por ti mismo. Te recordamos que también dispones de la presentación BASH Scripting: Una introducción mediante ejemplos.
+
+Al terminar conocerás algunos nuevos elementos de la programación en BASH y será la hora de utilizarlos en tu script sysinfo_page a medio hacer.
+
+2. Incorporar el procesamiento de la línea de comandos
+Modificar el programa principal del script para incorporar el código de procesamiento de la línea de comandos usado como ejemplo en el apartado Opciones de la línea de comandos de los apuntes de esta semana.
+
+Es importante tener en cuenta que ahora la información de salida debe volcarse al archivo indicado en la variable $filename. ¿Sabrías hacerlo? Sólo tienes que crear una función a modo de subcomando que contenga la sentencia del comando cat con el script-aquí (<< _EOF_...). Ahora desde el programa principal puedes invocar dicha función redirigiendo su contenido a lo indicado en la variable $filename.
+
+3. Implementar el modo interactivo
+Implementa en el programa principal del script el modo interactivo:
+
+Debe ejecutarse sólo cuando $interactive es 1, obviamente después de procesar la línea de comandos
+Debe preguntar al usuario por el nombre del archivo de salida.
+Debe comprobar si el archivo ya existe. Si así es, debe indicar al usuario lo que ocurre y preguntarle si quiere sobreescribirlo. En caso negativo el script debe terminar.
+Si el script no termina en este punto, el nombre del archivo de salida debe acabar almacenado en la variable $filename para su uso posterior para guardar la salida del script-aquí que comentamos anteriormente.
+4. Nueva opción de la línea de comandos: filtrado de particiones
+Imagina que el usuario está interesado en controlar que particiones se muestran al calcular el espacio libre en disco en la función drive_space. Así que vamos a añadir la opción "-p, --partitions-filter" con la que filtrar las particiones o unidades de disco mediante expresiones regulares.
+
+Incorporar al código que procesa los argumentos de la línea de comando la opción "-p, --partitions-filter". Esta opción recibirá un argumento que será la expresión regular con la que filtrar las particiones mostradas con df, de tal forma que sólo se muestren aquellas que cumplan con lo indicado por el filtro. Es decir, nuestro script se podría invocar de la siguiente manera: sysinfo_page -p "sd*" o sysinfo_page --partitions-filter "sd*".
+Sabiendo que las funciones se invocan como comandos y reciben sus argumentos a través de parámetros posicionales, como ocurre con el script principal:
+param() {
+    echo '$1 =' $1
+    echo '$2 =' $2
+}
+param palabra1 palabra2
+
+pasar el filtro especificado por el usuario a la función drive_space.
+Modificar la función drive_space para que si el usuario especificó un filtro mediante una expresión regular, la salida del comando df se filtre desde la primera columna usando grep con dicha expresión. Si no es especificó ninguna, debería mostrarse la salida de df en crudo, sin aplicar ningún filtro.
+A aquellos que tengan más interés les proponemos un reto adicional. Al filtrar, con mucha probabilidad desaparecerá el encabezado de la salida del comando df. ¿Serías capaz de evitarlo haciendo que el encabezado saliera siempre independientemente del filtro indicado por el usuario?
+
+5. Buscando procesos
+Utilizando las sentencias de control que incluye la Bash, realizaremos una búsqueda de los procesos cuyo propietario no esta actualmente en el sistema. Estos procesos típicamente son demonios que ofrecen un servicio. De esta manera buscaremos entre todos los procesos aquellos cuyo usuario no esta actualmente entre los usuarios del sistema.
+
+Para procesar la línea de comandos, utilizaremos el comando cut, que permite a través de un filtro seleccionar las distintas columnas del listado.
+
+6. Evaluación
+
+Se calificará por la correcta realización de los cambios al script que los profesores propongan durante la próxima sesión práctica. Por lo tanto es importante llegar a la misma con esta actividad ya hecha.
